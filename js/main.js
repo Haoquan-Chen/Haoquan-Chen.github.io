@@ -1,4 +1,6 @@
-const slides = [...document.querySelectorAll('.slide')];
+const slides = [...document.querySelectorAll('.slide')].sort(
+  (first, second) => Number(first.dataset.slide) - Number(second.dataset.slide),
+);
 const navItems = [...document.querySelectorAll('[data-slide-target]')];
 const brandLink = document.querySelector('.topbar__brand');
 const previousButton = document.querySelector('[data-action="previous-slide"]');
