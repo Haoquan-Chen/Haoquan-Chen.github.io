@@ -1797,13 +1797,11 @@ body {
 
 .topbar__brand {
   color: var(--blue-deep);
-  transition: color 180ms ease, letter-spacing 180ms ease;
 }
 
 .topbar__brand:hover,
 .topbar__brand:focus-visible {
   color: var(--accent);
-  letter-spacing: 0.14em;
   outline: none;
 }
 
@@ -1849,7 +1847,6 @@ body {
   box-shadow: 5px 5px 14px rgba(30, 64, 175, 0.09);
   cursor: pointer;
   overflow: hidden;
-  transition: width 220ms ease, color 180ms ease, transform 180ms ease, box-shadow 180ms ease, border-color 180ms ease;
 }
 
 .slide-nav__item::before {
@@ -1859,15 +1856,12 @@ body {
   background: linear-gradient(180deg, var(--cyan), var(--accent));
   content: "";
   opacity: 0;
-  transition: opacity 180ms ease;
 }
 
 .slide-nav__item:hover,
 .slide-nav__item:focus-visible {
-  width: 68px;
   border-color: #93c5fd;
   color: var(--accent);
-  transform: translateX(5px);
   box-shadow: 8px 8px 20px rgba(37, 99, 235, 0.18);
   outline: none;
 }
@@ -1878,7 +1872,6 @@ body {
   color: var(--paper);
   background: linear-gradient(135deg, var(--blue-deep), var(--accent) 66%, var(--cyan));
   box-shadow: 8px 8px 24px rgba(37, 99, 235, 0.3);
-  transform: translateX(5px);
 }
 
 .slide-nav__item.is-active::before,
@@ -1971,7 +1964,6 @@ h2 {
 .closing-card {
   border-color: rgba(147, 197, 253, 0.62);
   box-shadow: 0 8px 22px rgba(30, 64, 175, 0.05);
-  transition: transform 200ms ease, box-shadow 200ms ease, border-color 200ms ease, background 200ms ease;
 }
 
 .content-card:hover,
@@ -1984,7 +1976,6 @@ h2 {
 .closing-card:hover {
   border-color: rgba(37, 99, 235, 0.72);
   box-shadow: 0 14px 30px rgba(37, 99, 235, 0.14);
-  transform: translateY(-4px);
 }
 
 .learning-step:nth-child(3),
@@ -2008,7 +1999,6 @@ h2 {
   color: var(--blue-deep);
   background: linear-gradient(135deg, rgba(255, 255, 255, 0.94), rgba(224, 242, 254, 0.92));
   box-shadow: 0 5px 16px rgba(30, 64, 175, 0.1);
-  transition: transform 180ms ease, box-shadow 180ms ease, background 180ms ease, color 180ms ease;
 }
 
 .deck-control:hover:not(:disabled),
@@ -2017,59 +2007,6 @@ h2 {
   color: var(--paper);
   background: linear-gradient(135deg, var(--blue-deep), var(--accent));
   box-shadow: 0 8px 20px rgba(37, 99, 235, 0.24);
-  transform: translateY(-2px);
-}
-
-.slide.is-active {
-  animation: presentation-enter 420ms cubic-bezier(0.22, 1, 0.36, 1) both;
-}
-
-.slide.is-active > .slide__header,
-.slide.is-active > .title-block,
-.slide.is-active > .card-grid,
-.slide.is-active > .process-chain,
-.slide.is-active > .learning-loop,
-.slide.is-active > .deliverable-stack,
-.slide.is-active > .final-summary,
-.slide.is-active > .closing-triad {
-  animation: content-rise 500ms cubic-bezier(0.22, 1, 0.36, 1) both;
-}
-
-.slide.is-active > .title-block {
-  animation-delay: 70ms;
-}
-
-.slide.is-active > .card-grid,
-.slide.is-active > .process-chain,
-.slide.is-active > .learning-loop,
-.slide.is-active > .deliverable-stack,
-.slide.is-active > .final-summary,
-.slide.is-active > .closing-triad {
-  animation-delay: 130ms;
-}
-
-@keyframes presentation-enter {
-  from {
-    opacity: 0.35;
-    transform: translateY(8px) scale(0.992);
-  }
-
-  to {
-    opacity: 1;
-    transform: translateY(0) scale(1);
-  }
-}
-
-@keyframes content-rise {
-  from {
-    opacity: 0;
-    transform: translateY(12px);
-  }
-
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
 }
 
 @media (max-width: 760px) {
@@ -2117,13 +2054,3 @@ h2 {
   }
 }
 
-@media (prefers-reduced-motion: reduce) {
-  *,
-  *::before,
-  *::after {
-    scroll-behavior: auto !important;
-    animation-duration: 0.01ms !important;
-    animation-iteration-count: 1 !important;
-    transition-duration: 0.01ms !important;
-  }
-}
