@@ -289,6 +289,13 @@ h3 {
   margin-bottom: 0;
 }
 
+.project-statement__english {
+  margin-bottom: 6px !important;
+  font-family: Georgia, "Times New Roman", serif;
+  font-size: 1.15rem;
+  line-height: 1.25;
+}
+
 .card-grid {
   display: grid;
   gap: 14px;
@@ -363,6 +370,12 @@ h3 {
   color: var(--accent);
   font-family: Georgia, "Times New Roman", serif;
   font-size: 2.1rem;
+}
+
+.process-step h3 {
+  margin-bottom: 9px;
+  font-size: 1rem;
+  line-height: 1.2;
 }
 
 .process-step p:last-child {
