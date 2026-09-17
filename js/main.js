@@ -1,43 +1,9 @@
 const slides = [...document.querySelectorAll('.slide')];
 const navItems = [...document.querySelectorAll('[data-slide-target]')];
 const brandLink = document.querySelector('.topbar__brand');
-const appShell = document.querySelector('.app-shell');
-const sidebarToggle = document.querySelector('.sidebar-toggle');
-const sidebarToggleLabel = sidebarToggle?.querySelector('.sidebar-toggle__label');
-const sidebarToggleIcon = sidebarToggle?.querySelector('.sidebar-toggle__icon');
 const previousButton = document.querySelector('[data-action="previous-slide"]');
 const nextButton = document.querySelector('[data-action="next-slide"]');
-const sidebarStorageKey = 'intern-summary-sidebar-collapsed';
 let activeIndex = 0;
-
-function setSidebarCollapsed(collapsed, { persist = true } = {}) {
-  if (!appShell || !sidebarToggle) {
-    return;
-  }
-
-  appShell.classList.toggle('is-sidebar-collapsed', collapsed);
-  sidebarToggle.setAttribute('aria-expanded', String(!collapsed));
-  sidebarToggle.setAttribute(
-    'aria-label',
-    collapsed ? 'Expand chapter navigation' : 'Collapse chapter navigation',
-  );
-
-  if (sidebarToggleLabel) {
-    sidebarToggleLabel.textContent = collapsed ? 'EXPAND' : 'COLLAPSE';
-  }
-
-  if (sidebarToggleIcon) {
-    sidebarToggleIcon.textContent = collapsed ? '→' : '←';
-  }
-
-  if (persist) {
-    try {
-      window.localStorage.setItem(sidebarStorageKey, String(collapsed));
-    } catch {
-      // Storage can be unavailable for local files; the control still works.
-    }
-  }
-}
 
 function getSlideIndex(target) {
   if (typeof target === 'number') {
@@ -98,10 +64,6 @@ navItems.forEach((item) => {
   });
 });
 
-sidebarToggle?.addEventListener('click', () => {
-  setSidebarCollapsed(!appShell?.classList.contains('is-sidebar-collapsed'));
-});
-
 previousButton?.addEventListener('click', () => {
   showSlide(activeIndex - 1, { focus: true });
 });
@@ -126,15 +88,6 @@ document.addEventListener('keydown', (event) => {
   event.preventDefault();
   showSlide(nextIndex, { focus: true });
 });
-
-let initialSidebarCollapsed = false;
-try {
-  initialSidebarCollapsed = window.localStorage.getItem(sidebarStorageKey) === 'true';
-} catch {
-  initialSidebarCollapsed = false;
-}
-
-setSidebarCollapsed(initialSidebarCollapsed, { persist: false });
 
 const initialSlide = window.location.hash.slice(1);
 showSlide(slides.some((slide) => slide.id === initialSlide) ? initialSlide : 'slide-1', {
